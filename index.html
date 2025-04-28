@@ -23,11 +23,12 @@
         }
         .container {
             padding: 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background-color: #fff;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            margin-top: 20px;
         }
         h2 {
             color: #d32f2f;
@@ -41,7 +42,7 @@
             margin-bottom: 5px;
             display: block;
         }
-        .form-group input[type="text"], .form-group select {
+        .form-group input[type="text"], .form-group select, .form-group textarea {
             width: 100%;
             padding: 10px;
             font-size: 16px;
@@ -56,6 +57,7 @@
             padding: 12px 20px;
             cursor: pointer;
             border-radius: 5px;
+            opacity: 0.5;
         }
         .form-group input[type="submit"]:hover {
             background-color: #c62828;
@@ -65,6 +67,64 @@
             color: #555;
             text-align: center;
             padding: 10px;
+        }
+        .section {
+            display: none; /* Inicialmente ocultamos todas las secciones */
+        }
+        .section.active {
+            display: block; /* Mostramos la sección activa */
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .navigation button {
+            background-color: #d32f2f;
+            color: white;
+            font-size: 18px;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .navigation button:hover {
+            background-color: #c62828;
+        }
+        .form-group input[type="submit"]:disabled {
+            background-color: #bdbdbd; /* Color gris para cuando está deshabilitado */
+        }
+        /* Barra de progreso */
+        .progress-container {
+            width: 100%;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #4caf50;
+            border-radius: 10px;
+        }
+        /* Slide de Enviar Evaluación */
+        .submit-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .submit-section button {
+            background-color: #d32f2f;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            opacity: 0.5;
+        }
+        .submit-section button:hover {
+            background-color: #c62828;
         }
     </style>
 </head>
@@ -77,33 +137,218 @@
 
 <div class="container">
     <h2>Formulario de Evaluación</h2>
+
+    <!-- Barra de progreso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
     <form id="evaluationForm" action="#" method="POST">
-        <div class="form-group">
-            <label for="nombre">Nombre del Evaluado</label>
-            <input type="text" id="nombre" name="nombre" required>
+
+        <!-- Sección de selección del tipo de evaluación -->
+        <div id="section0" class="section active">
+            <h3>Selecciona el tipo de evaluación:</h3>
+            <div class="form-group">
+                <label for="evaluador">¿Quién está evaluando?</label>
+                <select id="evaluador" name="evaluador" required>
+                    <option value="director">Director</option>
+                    <option value="gerente">Gerente</option>
+                    <option value="auto">Auto-evaluación</option>
+                    <option value="colaborador">Colaborador</option>
+                </select>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="planificacion">1. Planificación: Prioriza tareas y gestiona su tiempo</label>
-            <select id="planificacion" name="planificacion" required>
-                <option value="0">0 - Deficiente</option>
-                <option value="50">50 - Necesita Mejorar</option>
-                <option value="75">75 - Bueno</option>
-                <option value="100">100 - Muy Bueno</option>
-            </select>
+
+        <!-- Sección 1: Planificación -->
+        <div id="section1" class="section">
+            <h2><strong>Planificación</strong></h2>
+            <div class="form-group">
+                <label for="planificacion">1. Prioriza tareas y gestiona su tiempo de manera efectiva</label>
+                <input type="text" id="planificacion" name="planificacion" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="estrategias">2. Utiliza estrategias para mitigar riesgos en los proyectos que lidera</label>
+                <input type="text" id="estrategias" name="estrategias" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="metas">3. Establece las metas de forma puntual y clara a cada miembro de su equipo</label>
+                <input type="text" id="metas" name="metas" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="eficiencia">4. Capacidad para lograr que el sector a su cargo trabaje con el máximo de eficiencia</label>
+                <input type="text" id="eficiencia" name="eficiencia" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="comunicacion">2. Comunicación: Habilidad para comunicar ideas de forma efectiva</label>
-            <select id="comunicacion" name="comunicacion" required>
-                <option value="0">0 - Deficiente</option>
-                <option value="50">50 - Necesita Mejorar</option>
-                <option value="75">75 - Bueno</option>
-                <option value="100">100 - Muy Bueno</option>
-            </select>
+
+        <!-- Sección 2: Organización -->
+        <div id="section2" class="section">
+            <h2><strong>Organización</strong></h2>
+            <div class="form-group">
+                <label for="organizacion">1. Capacidad para lograr que el sector a su cargo trabaje con el máximo de eficiencia haciendo uso efectivo de los recursos asignados, en función de los planes y requerimientos</label>
+                <input type="text" id="organizacion" name="organizacion" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="proyectos">2. Manejo de prioridades y plazos ajustados</label>
+                <input type="text" id="proyectos" name="proyectos" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="recursos">3. Colabora activamente con los equipos para planificar y ejecutar proyectos</label>
+                <input type="text" id="recursos" name="recursos" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
         </div>
-        <!-- Agregar más campos según los criterios del formulario -->
-        <div class="form-group">
-            <input type="submit" value="Enviar Evaluación">
+
+        <!-- Sección 3: Liderazgo y Motivación -->
+        <div id="section3" class="section">
+            <h2><strong>Liderazgo y Motivación</strong></h2>
+            <div class="form-group">
+                <label for="liderazgo">1. Motiva persistentemente a su equipo en cuanto al cumplimiento de objetivos</label>
+                <input type="text" id="liderazgo" name="liderazgo" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="conflicto">2. Maneja situaciones difíciles o de conflicto sin bloquearse</label>
+                <input type="text" id="conflicto" name="conflicto" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="inspirar">3. Inspira y motiva a equipos</label>
+                <input type="text" id="inspirar" name="inspirar" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="referente">4. Es un referente frente a sus pares, tiene actitud positiva frente a su función</label>
+                <input type="text" id="referente" name="referente" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="comunicacion">5. El nivel de comunicación y colaboración frente a su equipo y otros equipos es el adecuado</label>
+                <input type="text" id="comunicacion" name="comunicacion" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
         </div>
+
+        <!-- Sección 4: Control -->
+        <div id="section4" class="section">
+            <h2><strong>Control</strong></h2>
+            <div class="form-group">
+                <label for="indicadores">1. Mantiene y conoce los indicadores de gestión de su área permanentemente</label>
+                <input type="text" id="indicadores" name="indicadores" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="compromisos">2. Cumple con los compromisos pactados con otros equipos de trabajo</label>
+                <input type="text" id="compromisos" name="compromisos" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="agenda">3. Lleva una agenda ordenada para ejecución y seguimiento de proyectos</label>
+                <input type="text" id="agenda" name="agenda" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="procedimientos">4. Conoce y promueve los procedimientos internos de la compañía</label>
+                <input type="text" id="procedimientos" name="procedimientos" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+        </div>
+
+        <!-- Sección 5: Toma de Decisiones -->
+        <div id="section5" class="section">
+            <h2><strong>Toma de Decisiones</strong></h2>
+            <div class="form-group">
+                <label for="investigacion">1. Investiga y reúne datos antes de tomar decisiones</label>
+                <input type="text" id="investigacion" name="investigacion" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="momento">2. Toma decisiones en el momento oportuno</label>
+                <input type="text" id="momento" name="momento" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="conflictos">3. Maneja adecuadamente los conflictos o desacuerdos en la toma de decisiones</label>
+                <input type="text" id="conflictos" name="conflictos" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="impacto">4. Evalúa de forma adecuada el impacto de sus decisiones en la organización y en sus colaboradores</label>
+                <input type="text" id="impacto" name="impacto" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+        </div>
+
+        <!-- Sección 6: Resolución de Problemas -->
+        <div id="section6" class="section">
+            <h2><strong>Resolución de Problemas</strong></h2>
+            <div class="form-group">
+                <label for="resolver">1. Capacidad de detectar y resolver problemas de corto plazo</label>
+                <input type="text" id="resolver" name="resolver" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+        </div>
+
+        <!-- Sección 7: Iniciativa -->
+        <div id="section7" class="section">
+            <h2><strong>Iniciativa</strong></h2>
+            <div class="form-group">
+                <label for="accion">1. Capacidad para pasar a la acción asumiendo riesgos para alcanzar los objetivos establecidos</label>
+                <input type="text" id="accion" name="accion" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="propuestas">2. Promueve iniciativas e ideas para mejorar los procesos internos</label>
+                <input type="text" id="propuestas" name="propuestas" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="nuevas">3. Incentiva a su equipo para la presentación de nuevas ideas</label>
+                <input type="text" id="nuevas" name="nuevas" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="responsabilidad">4. Está dispuesto a asumir nuevas responsabilidades y desafíos dentro de su gestión</label>
+                <input type="text" id="responsabilidad" name="responsabilidad" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+        </div>
+
+        <!-- Sección 8: Comunicación -->
+        <div id="section8" class="section">
+            <h2><strong>Comunicación</strong></h2>
+            <div class="form-group">
+                <label for="informado">1. Mantiene informado al personal respecto de los nuevos procedimientos, cambios o políticas de la empresa</label>
+                <input type="text" id="informado" name="informado" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="gestion">2. Comunica su gestión de manera clara y efectiva</label>
+                <input type="text" id="gestion" name="gestion" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="exponer">3. Expone sus ideas en reuniones y conversaciones de equipo</label>
+                <input type="text" id="exponer" name="exponer" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+            <div class="form-group">
+                <label for="situaciones">4. Maneja de forma clara situaciones en la que debe comunicar situaciones difíciles o delicadas</label>
+                <input type="text" id="situaciones" name="situaciones" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+        </div>
+
+        <!-- Sección 9: Logro de Resultados -->
+        <div id="section9" class="section">
+            <h2><strong>Logro de Resultados</strong></h2>
+            <div class="form-group">
+                <label for="objetivos">1. Su equipo ha logrado los objetivos establecidos</label>
+                <input type="text" id="objetivos" name="objetivos" required placeholder="Ingrese un valor de 0 a 100">
+            </div>
+        </div>
+
+        <!-- Feedback -->
+        <div id="section_feedback" class="section">
+            <h2><strong>Feedback</strong></h2>
+            <div class="form-group">
+                <label for="feedback_director">Feedback a Director</label>
+                <textarea id="feedback_director" name="feedback_director" rows="4" placeholder="Ingrese feedback para el Director" maxlength="250" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="feedback_gerente">Feedback a Gerente</label>
+                <textarea id="feedback_gerente" name="feedback_gerente" rows="4" placeholder="Ingrese feedback para el Gerente" maxlength="250" required></textarea>
+            </div>
+        </div>
+
+        <!-- Navegación entre secciones -->
+        <div class="navigation">
+            <button type="button" id="prevBtn" onclick="navigate(-1)">Anterior</button>
+            <button type="button" id="nextBtn" onclick="navigate(1)">Siguiente</button>
+        </div>
+
+        <!-- Slide para el botón "Enviar Evaluación" al final -->
+        <div class="submit-section">
+            <button type="submit" disabled>Enviar Evaluación</button>
+        </div>
+
     </form>
 </div>
 
@@ -112,12 +357,53 @@
 </footer>
 
 <script>
+    let currentSection = 0;
+    const sections = document.querySelectorAll('.section');
+    const submitButton = document.querySelector('button[type="submit"]');
+    
+    function navigate(step) {
+        sections[currentSection].classList.remove('active');
+        currentSection += step;
+        sections[currentSection].classList.add('active');
+        toggleNavigation();
+        checkFormCompletion();
+        updateProgressBar();
+    }
+
+    function toggleNavigation() {
+        if (currentSection === 0) {
+            document.getElementById('prevBtn').disabled = true;
+        } else {
+            document.getElementById('prevBtn').disabled = false;
+        }
+        if (currentSection === sections.length - 1) {
+            document.getElementById('nextBtn').disabled = true;
+        } else {
+            document.getElementById('nextBtn').disabled = false;
+        }
+    }
+
+    function checkFormCompletion() {
+        let isComplete = true;
+        const inputs = sections[currentSection].querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            if (input.value === '' || (input.type === 'text' && isNaN(input.value))) {
+                isComplete = false;
+            }
+        });
+        submitButton.disabled = !isComplete;
+    }
+
+    function updateProgressBar() {
+        const progress = (currentSection + 1) / sections.length * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+    }
+
     document.getElementById('evaluationForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        
         const formData = new FormData(this);
 
-        fetch('https://example.com/saveData', {
+        fetch('https://example.com/saveData', {  // Cambia esta URL por la URL real de tu servidor o API de Power Automate
             method: 'POST',
             body: formData
         })
