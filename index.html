@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Desempeño 360º</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #d32f2f; /* Rojo Maxiseguridad */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        header img {
+            width: 80px;
+            margin-right: 20px;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            color: #d32f2f;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .form-group input[type="text"], .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group input[type="submit"] {
+            background-color: #d32f2f;
+            color: white;
+            font-size: 18px;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #c62828;
+        }
+        footer {
+            background-color: #f4f4f4;
+            color: #555;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="data:image/jpeg;base64,<?php echo base64_encode(file_get_contents('/mnt/data/OLC.jpg')); ?>" alt="Logo Maxiseguridad">
+    <h1>Evaluación de Desempeño 360º</h1>
+</header>
+
+<div class="container">
+    <h2>Formulario de Evaluación</h2>
+    <form id="evaluationForm" action="#" method="POST">
+        <div class="form-group">
+            <label for="nombre">Nombre del Evaluado</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="planificacion">1. Planificación: Prioriza tareas y gestiona su tiempo</label>
+            <select id="planificacion" name="planificacion" required>
+                <option value="0">0 - Deficiente</option>
+                <option value="50">50 - Necesita Mejorar</option>
+                <option value="75">75 - Bueno</option>
+                <option value="100">100 - Muy Bueno</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="comunicacion">2. Comunicación: Habilidad para comunicar ideas de forma efectiva</label>
+            <select id="comunicacion" name="comunicacion" required>
+                <option value="0">0 - Deficiente</option>
+                <option value="50">50 - Necesita Mejorar</option>
+                <option value="75">75 - Bueno</option>
+                <option value="100">100 - Muy Bueno</option>
+            </select>
+        </div>
+        <!-- Agregar más campos según los criterios del formulario -->
+        <div class="form-group">
+            <input type="submit" value="Enviar Evaluación">
+        </div>
+    </form>
+</div>
+
+<footer>
+    <p>Maxiseguridad - Expertos en protección contra incendios</p>
+</footer>
+
+<script>
+    document.getElementById('evaluationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const formData = new FormData(this);
+
+        fetch('https://example.com/saveData', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Evaluación enviada exitosamente.');
+        })
+        .catch(error => {
+            alert('Hubo un error al enviar la evaluación.');
+        });
+    });
+</script>
+
+</body>
+</html>
