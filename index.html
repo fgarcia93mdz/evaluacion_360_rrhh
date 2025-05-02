@@ -15,7 +15,6 @@
 
         header {
             background-color: #ffffff;
-            /* Rojo Maxiseguridad */
             color: #000000;
             padding: 20px;
             text-align: center;
@@ -80,9 +79,7 @@
             opacity: 0.5;
             margin-top: 20px;
             width: 100%;
-            /* Hacemos que el botón ocupe todo el ancho disponible */
             box-sizing: border-box;
-            /* Aseguramos que no se mueva por los bordes */
         }
 
         .form-group input[type="submit"]:hover {
@@ -98,12 +95,10 @@
 
         .section {
             display: none;
-            /* Inicialmente ocultamos todas las secciones */
         }
 
         .section.active {
             display: block;
-            /* Mostramos la sección activa */
         }
 
         .navigation {
@@ -121,7 +116,6 @@
             cursor: pointer;
             border-radius: 5px;
             min-width: 100px;
-            /* Aseguramos que los botones tengan un tamaño mínimo */
         }
 
         .navigation button:hover {
@@ -130,10 +124,8 @@
 
         .form-group input[type="submit"]:disabled {
             background-color: #bdbdbd;
-            /* Color gris para cuando está deshabilitado */
         }
 
-        /* Barra de progreso */
         .progress-container {
             width: 100%;
             height: 20px;
@@ -149,7 +141,6 @@
             border-radius: 10px;
         }
 
-        /* Slide de Enviar Evaluación */
         .submit-section {
             text-align: center;
             margin-top: 30px;
@@ -157,7 +148,6 @@
 
         .submit-section button {
             background-color: #d32f2f;
-            /* Rojo deshabilitado */
             color: white;
             padding: 12px 20px;
             border: none;
@@ -165,22 +155,17 @@
             cursor: pointer;
             border-radius: 5px;
             opacity: 0.5;
-            /* Botón deshabilitado */
         }
 
         .submit-section button:not(:disabled) {
             background-color: #d32f2f;
-            /* Rojo habilitado */
             opacity: 1;
-            /* Opacidad completa */
         }
 
         .submit-section button:hover:not(:disabled) {
             background-color: #c62828;
-            /* Rojo más oscuro al pasar el mouse */
         }
 
-        /* Barra de progreso con nombres de secciones */
         .progress-container .section-name {
             position: absolute;
             top: 100%;
@@ -208,12 +193,10 @@
 
         #messageBox.success {
             background-color: #4caf50;
-            /* Verde para éxito */
         }
 
         #messageBox.error {
             background-color: #f44336;
-            /* Rojo para error */
         }
 
         #messageBox.hidden {
@@ -223,27 +206,22 @@
         .input-group {
             display: flex;
             gap: 10px;
-            /* Espaciado entre los elementos */
             flex-wrap: wrap;
-            /* Permite que los elementos se ajusten en pantallas pequeñas */
         }
 
         .input-group input[type="text"] {
             width: 100%;
-            /* Ocupa todo el ancho disponible */
             padding: 12px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
             min-height: 40px;
-            /* Aseguramos que todos los campos tengan la misma altura mínima */
 
         }
 
         .input-group select {
             flex: 1;
-            /* Ambos elementos ocupan el mismo ancho */
             padding: 12px;
             font-size: 16px;
             border: 1px solid #ccc;
@@ -253,8 +231,7 @@
         }
 
         .input-group select {
-            max-width: 200px;
-            /* Limita el ancho del select */
+            max-width: 400px;
         }
     </style>
 </head>
@@ -269,25 +246,38 @@
     <div class="container">
         <h2>Formulario de Evaluación</h2>
 
-        <!-- Barra de progreso -->
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
 
         <form id="evaluationForm" action="#" method="POST">
 
-            <!-- Sección de selección del tipo de evaluación -->
             <div id="section0" class="section active">
-                <h3>Selecciona el tipo de evaluación:</h3>
+                <div class="form-group">
+                    <label for="evaluador">¿Quién será evaluando?</label>
+                    <div class="input-group">
+                        <input type="text" id="evaluado_nombre" name="evaluado_nombre" required
+                            placeholder="Ingrese el nombre y apellido de quien será evaluado">
+                        <select id="evaluado" name="evaluado" required>
+                            <option value="" disabled selected>Seleccione el rol del evaluado</option>
+                            <option value="director">Director</option>
+                            <option value="gerente">Gerente</option>
+                            <option value="supervisor">Supervisor</option>
+                            <option value="auto">Auto-evaluación</option>
+                            <option value="colaborador">Colaborador</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="evaluador">¿Quién está evaluando?</label>
                     <div class="input-group">
                         <input type="text" id="evaluador_nombre" name="evaluador_nombre" required
-                            placeholder="Ingrese su nombre completo">
+                            placeholder="Ingrese su nombre y apellido">
                         <select id="evaluador" name="evaluador" required>
                             <option value="" disabled selected>Seleccione su rol</option>
                             <option value="director">Director</option>
                             <option value="gerente">Gerente</option>
+                            <option value="supervisor">Supervisor</option>
                             <option value="auto">Auto-evaluación</option>
                             <option value="colaborador">Colaborador</option>
                         </select>
@@ -587,7 +577,7 @@
             progressBar.style.width = progress + '%';
             console.log(`Progreso actualizado: ${progress}%`);
         }
-        
+
         function checkFormCompletion() {
             let isComplete = true;
             const inputs = sections[currentSection].querySelectorAll('input, text');
