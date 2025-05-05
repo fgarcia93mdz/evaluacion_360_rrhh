@@ -47,7 +47,7 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin: 100px 40px 100px 40px;
         }
 
         .form-group label {
@@ -84,6 +84,15 @@
 
         .form-group input[type="submit"]:hover {
             background-color: #c62828;
+        }
+
+        .form-group input[type="submit"]:disabled {
+            background-color: #bdbdbd;
+        }
+
+        .navigation button:disabled {
+            background-color: #bdbdbd;
+            cursor: not-allowed;
         }
 
         footer {
@@ -143,7 +152,11 @@
 
         .submit-section {
             text-align: center;
-            margin-top: 30px;
+            margin: 150px 0 150px 0;
+        }
+
+        .section_submit {
+            text-align: center;
         }
 
         .submit-section button {
@@ -244,8 +257,6 @@
     </header>
 
     <div class="container">
-        <h2>Formulario de Evaluación</h2>
-
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
@@ -254,32 +265,17 @@
 
             <div id="section0" class="section active">
                 <div class="form-group">
-                    <label for="evaluador">¿Quién será evaluando?</label>
-                    <div class="input-group">
-                        <input type="text" id="evaluado_nombre" name="evaluado_nombre" required
-                            placeholder="Ingrese el nombre y apellido de quien será evaluado">
-                        <select id="evaluado" name="evaluado" required>
-                            <option value="" disabled selected>Seleccione el rol del evaluado</option>
-                            <option value="director">Director</option>
-                            <option value="gerente">Gerente</option>
-                            <option value="supervisor">Supervisor</option>
-                            <option value="auto">Auto-evaluación</option>
-                            <option value="colaborador">Colaborador</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label for="evaluador">¿Quién está evaluando?</label>
                     <div class="input-group">
                         <input type="text" id="evaluador_nombre" name="evaluador_nombre" required
                             placeholder="Ingrese su nombre y apellido">
                         <select id="evaluador" name="evaluador" required>
                             <option value="" disabled selected>Seleccione su rol</option>
-                            <option value="director">Director</option>
-                            <option value="gerente">Gerente</option>
-                            <option value="supervisor">Supervisor</option>
-                            <option value="auto">Auto-evaluación</option>
-                            <option value="colaborador">Colaborador</option>
+                            <option value="Director">Director</option>
+                            <option value="Gerente">Gerente</option>
+                            <option value="Supervisor">Supervisor</option>
+                            <option value="Auto-evaluación">Auto-evaluación</option>
+                            <option value="Colaborador">Colaborador</option>
                         </select>
                     </div>
                 </div>
@@ -287,210 +283,194 @@
 
             <!-- Sección 1: Planificación -->
             <div id="section1" class="section">
-                <h2><strong>Planificación</strong></h2>
+                <h2><strong>1 - Planificación</strong></h2>
                 <div class="form-group">
                     <label for="planificacion">1. Prioriza tareas y gestiona su tiempo de manera efectiva</label>
-                    <input type="number" id="planificacion" name="planificacion" required
+                    <input type="number" id="planificacion" name="1.1" required
                         placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="estrategias">2. Utiliza estrategias para mitigar riesgos en los proyectos que
                         lidera</label>
-                    <input type="number" id="estrategias" name="estrategias" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="estrategias" name="1.2" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="metas">3. Establece las metas de forma puntual y clara a cada miembro de su
                         equipo</label>
-                    <input type="number" id="metas" name="metas" required placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="metas" name="1.3" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="eficiencia">4. Capacidad para lograr que el sector a su cargo trabaje con el máximo de
                         eficiencia</label>
-                    <input type="number" id="eficiencia" name="eficiencia" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="eficiencia" name="1.4" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
             </div>
 
             <!-- Sección 2: Organización -->
             <div id="section2" class="section">
-                <h2><strong>Organización</strong></h2>
+                <h2><strong>2 - Organización</strong></h2>
                 <div class="form-group">
-                    <label for="organizacion">1. Capacidad para lograr que el sector a su cargo trabaje con el máximo de
+                    <label for="2.1">1. Capacidad para lograr que el sector a su cargo trabaje con el máximo de
                         eficiencia haciendo uso efectivo de los recursos asignados, en función de los planes y
                         requerimientos</label>
-                    <input type="number" id="organizacion" name="organizacion" required
+                    <input type="number" id="organizacion" name="2.1" required
                         placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="proyectos">2. Manejo de prioridades y plazos ajustados</label>
-                    <input type="number" id="proyectos" name="proyectos" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="proyectos" name="2.2" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="recursos">3. Colabora activamente con los equipos para planificar y ejecutar
                         proyectos</label>
-                    <input type="number" id="recursos" name="recursos" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="recursos" name="2.3" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
             </div>
 
             <!-- Sección 3: Liderazgo y Motivación -->
             <div id="section3" class="section">
-                <h2><strong>Liderazgo y Motivación</strong></h2>
+                <h2><strong>3 - Liderazgo y Motivación</strong></h2>
                 <div class="form-group">
                     <label for="liderazgo">1. Motiva persistentemente a su equipo en cuanto al cumplimiento de
                         objetivos</label>
-                    <input type="number" id="liderazgo" name="liderazgo" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="liderazgo" name="3.1" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="conflicto">2. Maneja situaciones difíciles o de conflicto sin bloquearse</label>
-                    <input type="number" id="conflicto" name="conflicto" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="conflicto" name="3.2" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="inspirar">3. Inspira y motiva a equipos</label>
-                    <input type="number" id="inspirar" name="inspirar" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="inspirar" name="3.3" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="referente">4. Es un referente frente a sus pares, tiene actitud positiva frente a su
                         función</label>
-                    <input type="number" id="referente" name="referente" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="referente" name="3.4" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="comunicacion">5. El nivel de comunicación y colaboración frente a su equipo y otros
                         equipos es el adecuado</label>
-                    <input type="number" id="comunicacion" name="comunicacion" required
+                    <input type="number" id="comunicacion" name="3.5" required
                         placeholder="Ingrese un valor de 1 a 100">
                 </div>
             </div>
 
             <!-- Sección 4: Control -->
             <div id="section4" class="section">
-                <h2><strong>Control</strong></h2>
+                <h2><strong>4 - Control</strong></h2>
                 <div class="form-group">
                     <label for="indicadores">1. Mantiene y conoce los indicadores de gestión de su área
                         permanentemente</label>
-                    <input type="number" id="indicadores" name="indicadores" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="indicadores" name="4.1" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="compromisos">2. Cumple con los compromisos pactados con otros equipos de trabajo</label>
-                    <input type="number" id="compromisos" name="compromisos" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="compromisos" name="4.2" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="agenda">3. Lleva una agenda ordenada para ejecución y seguimiento de proyectos</label>
-                    <input type="number" id="agenda" name="agenda" required placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="agenda" name="4.3" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="procedimientos">4. Conoce y promueve los procedimientos internos de la compañía</label>
-                    <input type="number" id="procedimientos" name="procedimientos" required
+                    <input type="number" id="procedimientos" name="4.4" required
                         placeholder="Ingrese un valor de 1 a 100">
                 </div>
             </div>
 
             <!-- Sección 5: Toma de Decisiones -->
             <div id="section5" class="section">
-                <h2><strong>Toma de Decisiones</strong></h2>
+                <h2><strong>5 - Toma de Decisiones</strong></h2>
                 <div class="form-group">
                     <label for="investigacion">1. Investiga y reúne datos antes de tomar decisiones</label>
-                    <input type="number" id="investigacion" name="investigacion" required
+                    <input type="number" id="investigacion" name="5.1" required
                         placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="momento">2. Toma decisiones en el momento oportuno</label>
-                    <input type="number" id="momento" name="momento" required placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="momento" name="5.2" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="conflictos">3. Maneja adecuadamente los conflictos o desacuerdos en la toma de
                         decisiones</label>
-                    <input type="number" id="conflictos" name="conflictos" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="conflictos" name="5.3" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="impacto">4. Evalúa de forma adecuada el impacto de sus decisiones en la organización y
                         en sus colaboradores</label>
-                    <input type="number" id="impacto" name="impacto" required placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="impacto" name="5.4" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
             </div>
 
             <!-- Sección 6: Resolución de Problemas -->
             <div id="section6" class="section">
-                <h2><strong>Resolución de Problemas</strong></h2>
+                <h2><strong>6 - Resolución de Problemas</strong></h2>
                 <div class="form-group">
                     <label for="resolver">1. Capacidad de detectar y resolver problemas de corto plazo</label>
-                    <input type="number" id="resolver" name="resolver" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="resolver" name="6.1" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
             </div>
 
             <!-- Sección 7: Iniciativa -->
             <div id="section7" class="section">
-                <h2><strong>Iniciativa</strong></h2>
+                <h2><strong>7 - Iniciativa</strong></h2>
                 <div class="form-group">
                     <label for="accion">1. Capacidad para pasar a la acción asumiendo riesgos para alcanzar los
                         objetivos establecidos</label>
-                    <input type="number" id="accion" name="accion" required placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="accion" name="7.1" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="propuestas">2. Promueve iniciativas e ideas para mejorar los procesos internos</label>
-                    <input type="number" id="propuestas" name="propuestas" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="propuestas" name="7.2" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="nuevas">3. Incentiva a su equipo para la presentación de nuevas ideas</label>
-                    <input type="number" id="nuevas" name="nuevas" required placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="nuevas" name="7.3" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="responsabilidad">4. Está dispuesto a asumir nuevas responsabilidades y desafíos dentro
                         de su gestión</label>
-                    <input type="number" id="responsabilidad" name="responsabilidad" required
+                    <input type="number" id="responsabilidad" name="7.4" required
                         placeholder="Ingrese un valor de 1 a 100">
                 </div>
             </div>
 
             <!-- Sección 8: Comunicación -->
             <div id="section8" class="section">
-                <h2><strong>Comunicación</strong></h2>
+                <h2><strong>8 - Comunicación</strong></h2>
                 <div class="form-group">
                     <label for="informado">1. Mantiene informado al personal respecto de los nuevos procedimientos,
                         cambios o políticas de la empresa</label>
-                    <input type="number" id="informado" name="informado" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="informado" name="8.1" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="gestion">2. Comunica su gestión de manera clara y efectiva</label>
-                    <input type="number" id="gestion" name="gestion" required placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="gestion" name="8.2" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="exponer">3. Expone sus ideas en reuniones y conversaciones de equipo</label>
-                    <input type="number" id="exponer" name="exponer" required placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="exponer" name="8.3" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
                 <div class="form-group">
                     <label for="situaciones">4. Maneja de forma clara situaciones en la que debe comunicar situaciones
                         difíciles o delicadas</label>
-                    <input type="number" id="situaciones" name="situaciones" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="situaciones" name="8.4" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
             </div>
 
             <!-- Sección 9: Logro de Resultados -->
             <div id="section9" class="section">
-                <h2><strong>Logro de Resultados</strong></h2>
+                <h2><strong>9 - Logro de Resultados</strong></h2>
                 <div class="form-group">
                     <label for="objetivos">1. Su equipo ha logrado los objetivos establecidos</label>
-                    <input type="number" id="objetivos" name="objetivos" required
-                        placeholder="Ingrese un valor de 1 a 100">
+                    <input type="number" id="objetivos" name="9.1" required placeholder="Ingrese un valor de 1 a 100">
                 </div>
             </div>
 
             <!-- Feedback -->
             <div id="section_feedback" class="section">
-                <h2><strong>Feedback</strong></h2>
+                <h2><strong>10- Feedback</strong></h2>
                 <div class="form-group">
                     <label for="feedback_director">Feedback a Director</label>
                     <input type="text" id="feedback_director" name="feedback_director"
@@ -504,15 +484,12 @@
                 </div>
             </div>
 
-            <!-- Nueva sección para enviar evaluación -->
             <div id="section_submit" class="section">
-                <h2><strong>Enviar Evaluación</strong></h2>
                 <div class="submit-section">
                     <button type="submit" disabled>Enviar Evaluación</button>
                 </div>
             </div>
 
-            <!-- Navegación entre secciones -->
             <div class="navigation">
                 <button type="button" id="prevBtn" onclick="navigate(-1)">Anterior</button>
                 <button type="button" id="nextBtn" onclick="navigate(1)">Siguiente</button>
@@ -580,7 +557,7 @@
 
         function checkFormCompletion() {
             let isComplete = true;
-            const inputs = sections[currentSection].querySelectorAll('input, text');
+            const inputs = sections[currentSection].querySelectorAll('input, textarea');
 
             inputs.forEach(input => {
                 if (input.type === "number") {
@@ -593,11 +570,8 @@
                     }
                 }
 
-                console.log(`🚀 ~ checkFormCompletion ~ input.type === "text":`, input.type === "text")
-
                 if (input.type === "text") {
                     const trimmedValue = input.value.trim();
-                    console.log("🚀 ~ checkFormCompletion ~ trimmedValue:", trimmedValue)
                     if (trimmedValue === '') {
                         console.log(`Campo de texto ${input.name} está vacío`);
                         isComplete = false;
@@ -612,14 +586,23 @@
 
             submitButton.disabled = !isComplete;
 
-            if (isComplete) {
-                console.log("Todos los campos están completos y son válidos.");
-                submitButton.disabled = false; // Habilitar el botón
+            if (isComplete && currentSection === sections.length - 1) {
+                document.getElementById('nextBtn').disabled = true;
             } else {
-                console.log("Faltan completar algunos campos o son inválidos.");
-                submitButton.disabled = true; // Deshabilitar el botón
+                document.getElementById('nextBtn').disabled = false;
+            }
+
+            if (currentSection === 0) {
+                document.getElementById('prevBtn').disabled = true;
+            } else {
+                document.getElementById('prevBtn').disabled = false;
+            }
+
+            if (isComplete && currentSection === sections.length - 1) {
+                document.getElementById('prevBtn').disabled = true;
             }
         }
+
 
         function toggleNavigation() {
             if (currentSection === 0) {
@@ -646,22 +629,133 @@
             }, 3000);
         }
 
+        function calcularPromedio(seccion) {
+            const campos = seccion.querySelectorAll('input[type="number"]');
+            let suma = 0;
+            let count = 0;
+
+            campos.forEach(campo => {
+                const value = parseInt(campo.value.trim(), 10);
+                if (!isNaN(value)) {
+                    suma += value;
+                    count++;
+                }
+            });
+
+            return count > 0 ? (suma / count).toFixed(2) : 0;
+        }
+
+        function calcularPromedioGeneral() {
+            const inputs = document.querySelectorAll('input[type="number"]');
+            let suma = 0;
+            let count = 0;
+
+            inputs.forEach(input => {
+                const value = parseInt(input.value.trim(), 10);
+                if (!isNaN(value) && value >= 1 && value <= 100) {
+                    suma += value;
+                    count++;
+                }
+            });
+
+
+            return count > 0 ? (suma / count).toFixed(2) : 0;
+        }
+
+        function obtenerCuatrimestre() {
+            const fechaActual = new Date();
+            const mes = fechaActual.getMonth() + 1;
+            const cuatrimestre = Math.ceil(mes / 4);
+            return cuatrimestre;
+        }
+        
+    
         document.getElementById('evaluationForm').addEventListener('submit', function (event) {
             event.preventDefault();
-            const formData = new FormData(this);
 
-            fetch('https://example.com/saveData', {
+            // Calcular los promedios de cada sección
+            const promedioPlanificacion = calcularPromedio(document.getElementById('section1'));
+            const promedioOrganizacion = calcularPromedio(document.getElementById('section2'));
+            const promedioLiderazgo = calcularPromedio(document.getElementById('section3'));
+            const promedioControl = calcularPromedio(document.getElementById('section4'));
+            const promedioDecisiones = calcularPromedio(document.getElementById('section5'));
+            const promedioProblemas = calcularPromedio(document.getElementById('section6'));
+            const promedioIniciativa = calcularPromedio(document.getElementById('section7'));
+            const promedioComunicacion = calcularPromedio(document.getElementById('section8'));
+            const promedioResultados = calcularPromedio(document.getElementById('section9'));
+
+            const promedioGeneral = calcularPromedioGeneral();
+
+            const data = {
+                "evaluador_nombre": document.getElementById('evaluador_nombre').value,
+                "evaluador": document.getElementById('evaluador').value,
+                "planificacion": parseInt(promedioPlanificacion, 10),
+                "1.1": parseInt(document.getElementById('planificacion').value, 10),
+                "1.2": parseInt(document.getElementById('estrategias').value, 10),
+                "1.3": parseInt(document.getElementById('metas').value, 10),
+                "1.4": parseInt(document.getElementById('eficiencia').value, 10),
+                "organizacion": parseInt(promedioOrganizacion, 10),
+                "2.1": parseInt(document.getElementById('organizacion').value, 10),
+                "2.2": parseInt(document.getElementById('proyectos').value, 10),
+                "2.3": parseInt(document.getElementById('recursos').value, 10),
+                "liderazgo": parseInt(promedioLiderazgo, 10),
+                "3.1": parseInt(document.getElementById('liderazgo').value, 10),
+                "3.2": parseInt(document.getElementById('conflicto').value, 10),
+                "3.3": parseInt(document.getElementById('inspirar').value, 10),
+                "3.4": parseInt(document.getElementById('referente').value, 10),
+                "3.5": parseInt(document.getElementById('comunicacion').value, 10),
+                "control": parseInt(promedioControl, 10),
+                "4.1": parseInt(document.getElementById('indicadores').value, 10),
+                "4.2": parseInt(document.getElementById('compromisos').value, 10),
+                "4.3": parseInt(document.getElementById('agenda').value, 10),
+                "4.4": parseInt(document.getElementById('procedimientos').value, 10),
+                "deciciones": parseInt(promedioDecisiones, 10),
+                "5.1": parseInt(document.getElementById('investigacion').value, 10),
+                "5.2": parseInt(document.getElementById('momento').value, 10),
+                "5.3": parseInt(document.getElementById('conflictos').value, 10),
+                "5.4": parseInt(document.getElementById('impacto').value, 10),
+                "problemas": parseInt(promedioProblemas, 10),
+                "6.1": parseInt(document.getElementById('resolver').value, 10),
+                "iniciativa": parseInt(promedioIniciativa, 10),
+                "7.1": parseInt(document.getElementById('accion').value, 10),
+                "7.2": parseInt(document.getElementById('propuestas').value, 10),
+                "7.3": parseInt(document.getElementById('nuevas').value, 10),
+                "7.4": parseInt(document.getElementById('responsabilidad').value, 10),
+                "comunicacion": parseInt(promedioComunicacion, 10),
+                "8.1": parseInt(document.getElementById('informado').value, 10),
+                "8.2": parseInt(document.getElementById('gestion').value, 10),
+                "8.3": parseInt(document.getElementById('exponer').value, 10),
+                "8.4": parseInt(document.getElementById('situaciones').value, 10),
+                "resultados": parseInt(promedioResultados, 10),
+                "9.1": parseInt(document.getElementById('objetivos').value, 10),
+                "feedback_director": document.getElementById('feedback_director').value,
+                "feedback_gerente": document.getElementById('feedback_gerente').value,
+                "promedio_general": parseFloat(promedioGeneral),
+                "cuatrimestre": `${obtenerCuatrimestre()}° Cuatrimestre`,
+                
+            };
+
+            // Mostrar los datos enviados en la consola para verificar
+            console.log("Datos enviados:");
+            console.log(JSON.stringify(data, null, 2));
+
+            // Enviar los datos a Power Automate
+            fetch('https://prod-163.westus.logic.azure.com:443/workflows/860823d6a6a64b259a2a7af0e66a816b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=vq6RFbg3VX4qzABQqegonZuMlor-rcGBTg7HxA1fzV4', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             })
                 .then(response => response.json())
-                .then(data => {
+                .then(responseData => {
                     showMessage('Evaluación enviada exitosamente.', 'success');
                 })
                 .catch(error => {
                     showMessage('Hubo un error al enviar la evaluación.', 'error');
                 });
         });
+
 
         // Depuración en tiempo real de los valores de los text
         /*document.querySelectorAll('text').forEach(text => {
